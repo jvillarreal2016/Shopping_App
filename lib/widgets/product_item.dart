@@ -8,9 +8,9 @@ import '../providers/cart.dart';
 class ProductItem extends StatelessWidget {
   // final String id;
   // final String title;
-  // final String imgURL;
+  // final String imageUrl;
 
-  // ProductItem(this.id, this.title, this.imgURL);
+  // ProductItem(this.id, this.title, this.imageUrl);
 
   @override
   Widget build(BuildContext context) {
@@ -21,11 +21,13 @@ class ProductItem extends StatelessWidget {
       child: GridTile(
         child: GestureDetector(
           onTap: () {
-            Navigator.of(context).pushNamed(ProductDetailScreen.routeName,
-                arguments: product.id);
+            Navigator.of(context).pushNamed(
+              ProductDetailScreen.routeName,
+              arguments: product.id,
+            );
           },
           child: Image.network(
-            product.imgURL,
+            product.imageUrl,
             fit: BoxFit.cover,
           ),
         ),
@@ -41,7 +43,6 @@ class ProductItem extends StatelessWidget {
                 product.toggleFavoriteStatus();
               },
             ),
-            child: Text('Never changes!'),
           ),
           title: Text(
             product.title,

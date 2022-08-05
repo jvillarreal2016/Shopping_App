@@ -7,17 +7,17 @@ class ProductDetailScreen extends StatelessWidget {
   // final String title;
   // final double price;
 
-  //ProductDetailScreen(this.title, this.price);
+  // ProductDetailScreen(this.title, this.price);
   static const routeName = '/product-detail';
 
   @override
   Widget build(BuildContext context) {
-    final productId = ModalRoute.of(context).settings.arguments as String;
+    final productId =
+        ModalRoute.of(context).settings.arguments as String; // is the id!
     final loadedProduct = Provider.of<Products>(
       context,
       listen: false,
     ).findById(productId);
-
     return Scaffold(
       appBar: AppBar(
         title: Text(loadedProduct.title),
@@ -29,13 +29,11 @@ class ProductDetailScreen extends StatelessWidget {
               height: 300,
               width: double.infinity,
               child: Image.network(
-                loadedProduct.imgURL,
+                loadedProduct.imageUrl,
                 fit: BoxFit.cover,
               ),
             ),
-            SizedBox(
-              height: 10,
-            ),
+            SizedBox(height: 10),
             Text(
               '\$${loadedProduct.price}',
               style: TextStyle(
@@ -47,14 +45,14 @@ class ProductDetailScreen extends StatelessWidget {
               height: 10,
             ),
             Container(
-              padding: EdgeInsets.symmetric(),
+              padding: EdgeInsets.symmetric(horizontal: 10),
               width: double.infinity,
               child: Text(
                 loadedProduct.description,
                 textAlign: TextAlign.center,
                 softWrap: true,
               ),
-            ),
+            )
           ],
         ),
       ),
